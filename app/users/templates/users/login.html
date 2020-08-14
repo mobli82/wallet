@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row">
+        <div class="col-ms-6 border rounded mt-3 p-4 shadow">
+            <form action="" method="post">{% csrf_token %}
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
+                
+                <input type="submit" value="Log In" class="btn btn-info m-2">
+            </form>
+
+        </div>
+
+    </div>
+{% endblock content %}
