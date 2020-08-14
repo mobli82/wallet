@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row">
+        <div class="col-7 border rounded mt-3 p-4 shadow">
+            <form action="" method="post">
+                {{ form|crispy }}
+                
+                <input type="submit" value="Register" class="btn btn-info m-2">
+            </form>
+
+        </div>
+
+    </div>
+{% endblock content %}
