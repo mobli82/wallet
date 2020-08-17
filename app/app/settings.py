@@ -126,6 +126,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'profile/'
+LOGIN_REDIRECT_URL = '/profile/'
 
 CRISPY_TEMPALTE_PACK = 'bootstrap4'
