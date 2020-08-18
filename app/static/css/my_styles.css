@@ -1,0 +1,32 @@
+.fonts{
+    font-size: 80px;
+}
+
+.fonts:hover{
+    text-decoration: none;
+}
+
+.nav-font{
+    font-size: 29px;
+}
+
+.tail{
+    display: block;
+    transform: scale(1.0, 1.0);
+    transition: transform 1s;
+}
+
+.tail:hover{
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+    transition: transform 1s;
+}
+
+.icons{
+    font-size: 150px;
+    font-weight: 600;
+}
+
+.tail-text{
+    font-size: 40px!important;
+}
