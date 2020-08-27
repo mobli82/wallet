@@ -19,7 +19,7 @@ from django.contrib.auth.views import  (LoginView,
                                         PasswordResetDoneView,
                                         PasswordResetConfirmView,
                                         PasswordResetCompleteView,
-                                        )
+    )
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings

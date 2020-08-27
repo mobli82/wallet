@@ -6,7 +6,15 @@ from .models import Profile
 
 admin.site.register(Profile)
 
-# admin.site.unregister(User)
+class UserAdminSite(admin.ModelAdmin):
+    list_display = ['username','email' ,'first_name', 'last_name']
+    # fieldsets = [
+    #     (None,               {'fields': ['username', 'email']}),
+    # ]
+    
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdminSite)
 
 # def show_name(modeladmin, request, queryset):
 #     for user in queryset:

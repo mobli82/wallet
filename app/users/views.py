@@ -3,15 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegistrationForm, ProfileUpdateForm, UserUpdateForm
 
-
-# Create your views here.
-
 def register(request):
     form = UserRegistrationForm(request.POST or None,)
 
     if form.is_valid():
         form.save()
-
         messages.success(request, f'Account has been created')
         return redirect('login')
 
