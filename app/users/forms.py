@@ -66,9 +66,9 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 class UserLoginForm(AuthenticationForm):
-    username = UsernameField(label='', widget=forms.TextInput(attrs={'autofocus': True}))
+    username = UsernameField(label='Username', widget=forms.TextInput(attrs={'autofocus': True}))
     password = forms.CharField(
-        label=_(""),
+        label=_("Password"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password',}),
     )
