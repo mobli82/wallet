@@ -13,8 +13,8 @@ class UserAdminSite(admin.ModelAdmin):
     # ]
     
 
-admin.site.unregister(User)
-admin.site.register(User, UserAdminSite)
+# admin.site.unregister(User)
+# admin.site.register(User, UserAdminSite)
 
 # def show_name(modeladmin, request, queryset):
 #     for user in queryset:
