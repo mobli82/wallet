@@ -65,43 +65,41 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
-class UserLoginForm(AuthenticationForm):
-    username = UsernameField(label='Username', widget=forms.TextInput(attrs={'autofocus': True}))
-    password = forms.CharField(
-        label=_("Password"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password',}),
-    )
+# class UserLoginForm(AuthenticationForm):
+#     username = UsernameField(label='Username', widget=forms.TextInput(attrs={'autofocus': True}))
+#     password = forms.CharField(
+#         label=_("Password"),
+#         strip=False,
+#         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password',}),
+#     )
 
-    error_messages = {
-        'invalid_login': _(
-            "Please enter a correct %(username)s and password. Note that both "
-            "fields may be case-sensitive."
-        ),
-        'inactive': _("This account is inactive."),
-    }
+#     error_messages = {
+#         'invalid_login': _(
+#             "Please enter a correct %(username)s and password. Note that both "
+#             "fields may be case-sensitive."
+#         ),
+#         'inactive': _("This account is inactive."),
+#     }
     
-    def __init__(self,request=None, *args, **kwargs):
-        self.request = request
-        self.helper = FormHelper()
+#     def __init__(self,request=None, *args, **kwargs):
+#         self.request = request
+#         self.helper = FormHelper()
 
-        self.helper.form_class = 'form-vertical'
-        self.helper.form_method = 'post'
-        # self.helper.field_class = 'col-4 m-3'
-        self.helper.label_class = 'col-sm-4 text-warning'
+#         self.helper.form_class = 'form-vertical'
+#         self.helper.form_method = 'post'
+#         # self.helper.field_class = 'col-4 m-3'
+#         self.helper.label_class = 'col-sm-4 text-warning'
 
-        self.helper.layout = Layout(
-            Fieldset('Username'),
-            Field('username', css_class='col-md-10 form-group form-control m-2'),
-            Fieldset('Password'),
-            Field('password', css_class='col-md-10 form-group form-control m-2'),
-        )
+#         self.helper.layout = Layout(
+#             Fieldset('Username'),
+#             Field('username', css_class='col-md-10 form-group form-control m-2'),
+#             Fieldset('Password'),
+#             Field('password', css_class='col-md-10 form-group form-control m-2'),
+#         )
 
-        self.helper.add_input(
-            Submit(
-                'submit', 'Log In', css_class='col-sm-4 offset-sm-2 m-2', **kwargs
-            )
-        )
-
-
-        super(UserLoginForm, self).__init__(*args, **kwargs)
+#         self.helper.add_input(
+#             Submit(
+#                 'submit', 'Log In', css_class='col-sm-4 offset-sm-2 m-2', **kwargs
+#             )
+#         )
+#         super(UserLoginForm, self).__init__(*args, **kwargs)
