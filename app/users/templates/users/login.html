@@ -1,39 +1,22 @@
+
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-<<<<<<< HEAD
 {% block content %}
     <div class="content-section col-md-6 shadow border rounded mt-3">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4 text-center">Log In</legend>
+                <legend class="border-bottom mb-4">Log In</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-info mx-auto" type="submit">Login</button>
+                <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
         </form>
         <div class="border-top pt-3">
-=======
-    <div class="content border rounded shadow mt-4 p-3 col-md-4">
-        {% comment %} <div class="col-md-6 border rounded mt-3 p-4 shadow">
-            <form action="" method="post">{% csrf_token %}
-                <legend class="border-bottom mb-4"> Log In </legend>
-                    <fieldset class="form-group">
-                        {{ form|crispy }}
-                    </fieldset>
-                <input type="submit" value="Log In" class="btn btn-info mt-3 mb-3">
-                
-            </form>
->>>>>>> added main.css in static
             <small class="text-muted">
-                Need An Account? <a class="ml-2" href="{% url 'register' %}">Register</a>
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </small>
-<<<<<<< HEAD
         </div>
-=======
-        </div> {% endcomment %}
-        {% crispy form %}
->>>>>>> added main.css in static
     </div>
 {% endblock content %}
