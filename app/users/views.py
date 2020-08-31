@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.contrib import messages
-from .forms import UserRegistrationForm, ProfileUpdateForm, UserUpdateForm
+from .forms import (UserRegistrationForm, 
+                    ProfileUpdateForm, 
+                    UserUpdateForm, 
+                    UserLoginForm
+)
+
+class UserLoginView(LoginView):
+    form_class = UserLoginForm
+    template_name = 'users/login.html'
 
 def register(request):
     form = UserRegistrationForm(request.POST or None,)
