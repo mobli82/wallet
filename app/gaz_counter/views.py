@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import (ListView, CreateView, DeleteView, DetailView, UpdateView)
 
+from .forms import GazCounterForm
 from .models import GazCounterModel
 
 class GazCounterListView(ListView):
@@ -10,3 +11,11 @@ class GazCounterListView(ListView):
     context_object_name = 'gaz_list'
     ordering = ['-date']
 
+class GazCounterCreateView(CreateView):
+    model = GazCounterModel
+    fields = ['value', 'monthly_usage', 'unit_price']
+    template_name = 'gaz_counter/gaz_counter_create.html'
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
