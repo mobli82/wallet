@@ -9,3 +9,4 @@ class GazCounterListView(ListView):
     paginate_by = 5
     context_object_name = 'gaz_list'
     ordering = ['-date']
+
