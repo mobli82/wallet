@@ -40,6 +40,7 @@ urlpatterns = [
                                                                 name='password_reset_complete'),
     path('', include('users.urls')),
     path('', include('wallet.urls')),
+    path('', include('gaz_counter.urls')),
 ] 
 
 if settings.DEBUG:
