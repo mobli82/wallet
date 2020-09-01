@@ -23,3 +23,8 @@ class GazCounterCreateView(CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+class GazCounterDeletelView(DeleteView):
+    model = GazCounterModel
+    template_name = 'gaz_counter/gaz_counter_delete.html'
+    success_url = '/gaz-list/'
