@@ -11,6 +11,10 @@ class GazCounterListView(ListView):
     context_object_name = 'gaz_list'
     ordering = ['-date']
 
+class GazCounterDetailView(DetailView):
+    model = GazCounterModel
+    template_name = 'gaz_counter/gaz_counter_detail.html'
+
 class GazCounterCreateView(CreateView):
     model = GazCounterModel
     fields = ['value', 'monthly_usage', 'unit_price']

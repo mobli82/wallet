@@ -32,7 +32,7 @@
 							<td>{{ record.price }}</td>
 							<td>{{ record.monthly_usage }}</td>
 							<td><a href="#" class="btn btn-info">Edit</a></td>
-							<td><a href="#" class="btn btn-warning">Detail</a></td>
+							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="#" class="btn btn-danger">Delete</a></td>
 						</tr>
 					{% endfor %}
