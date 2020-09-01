@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 class GazCounterUnitPriceModel(models.Model):
     price = models.DecimalField(default=1.30, max_digits=1000, decimal_places=2)
@@ -20,3 +21,7 @@ class GazCounterModel(models.Model):
 
     def __str__(self):
         return f'{self.value} {self.date} {self.unit_price} {self.monthly_usage} {self.monthly_cost} {self.total_cost}'
+    
+    def get_absolute_url(self):
+        return reverse("gaz-detail", kwargs={"pk": self.pk})
+    

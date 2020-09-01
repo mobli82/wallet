@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container ">
+		
+      	{% if  user.is_authenticated %}
+			<h3 class="text-success mt-4"> Gaz Counter List </h3>
+			<span class="badge badge-info font-badge p-2">Total cost: </span>
+			
+			<table class="table mt-3">
+				<div class="mt-4">
+					<a href="#" class="btn btn-secondary">Back to Counters</a>
+					<a href="#" class="btn btn-success"> Add Record </a>
+				</div>
+				<thead>
+			 		<tr>
+						<th scope="col"> Nr </th>
+						<th scope="col"> Date</th>
+						<th scope="col"> Value</th>
+						<th scope="col"> Price</th>
+						<th scope="col"> Usage</th>
+						<th scope="col"> Update</th>
+						<th scope="col"> Detail</th>
+						<th scope="col"> Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for record in gaz_list %}
+						<tr>
+							<td>{{ forloop.counter }}</td>
+							<td>{{ record.date|date:"d/m/Y" }}</td>
+							<td>{{ record.value }}</td>
+							<td>{{ record.price }}</td>
+							<td>{{ record.monthly_usage }}</td>
+							<td><a href="#" class="btn btn-info">Edit</a></td>
+							<td><a href="#" class="btn btn-warning">Detail</a></td>
+							<td><a href="#" class="btn btn-danger">Delete</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div>
+				{% if is_paginated %}
+					{% if page_obj.has_previous %}
+						<a href="?page=1" class="btn btn-info">First</a>
+						<a href="?page={{ page_obj.previous_page_number }}" class="btn btn-info">Prev</a>
+					{% endif %}
+
+					{% for page in page_obj.paginator.page_range %}
+						{% if page == page_obj.number %}
+							<a href="?page={{ page }}" class="btn btn-info">{{ page }}</a>
+						
+						{% elif page > page_obj.number|add:'-2' and page < page_obj.number|add:'2' %}
+							<a href="?page={{ page }}" class="btn btn-outline-info">{{ page }}</a>
+						{% endif %}
+
+					{% endfor%}
+					
+					{% if page_obj.has_next %}
+						<a href="?page={{ page_obj.next_page_number }}" class="btn btn-info">Next</a>
+						<a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-info">Last</a>
+					{% endif %}
+				{% endif %}
+			</div>
+			
+		{% else %}
+			<div class="col-4 mt-4 p-3 ml-5 border border-secondary rounded shadow-sm rounded bg-lightssss">
+				<h3>You are not logged In!!</h3>
+				<p><a href="{% url 'login' %}" class="btn btn-secondary">Log In </a></p>
+			</div>
+		{% endif %}  
+
+    </div>
+{% endblock content %}
