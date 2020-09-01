@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'users.apps.UsersConfig',
     'wallet.apps.WalletConfig',
+    'gaz_counter.apps.GazCounterConfig',
 ]
 
 MIDDLEWARE = [
