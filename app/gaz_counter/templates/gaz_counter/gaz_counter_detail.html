@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container ">
+		
+      	{% if  user.is_authenticated %}
+			<table class="table mt-3">
+				<div class="mt-4">
+					<a href="{% url 'gaz-list' %}" class="btn btn-secondary">Back</a>
+				</div>
+				<thead>
+			 		<tr>
+						<th scope="col"> Date</th>
+						<th scope="col"> Value</th>
+						<th scope="col"> Price</th>
+						<th scope="col"> Usage</th>
+					</tr>
+				</thead>
+				<tbody>
+                    <tr>
+                        <td>{{ object.date|date:"d/m/Y" }}</td>
+                        <td>{{ object.value }}</td>
+                        <td>{{ object.price }}</td>
+                        <td>{{ object.monthly_usage }}</td>
+                    </tr>
+				</tbody>
+			</table>			
+		{% else %}
+			<div class="col-4 mt-4 p-3 ml-5 border border-secondary rounded shadow-sm rounded bg-lightssss">
+				<h3>You are not logged In!!</h3>
+				<p><a href="{% url 'login' %}" class="btn btn-secondary">Log In </a></p>
+			</div>
+		{% endif %}  
+
+    </div>
+{% endblock content %}

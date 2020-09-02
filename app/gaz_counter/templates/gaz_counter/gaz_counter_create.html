@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section col-md-6 mt-4">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Add Gaz Record</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Add</button>
+                <a href="{% url 'gaz-list' %}" class="btn btn-warning">Back</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
