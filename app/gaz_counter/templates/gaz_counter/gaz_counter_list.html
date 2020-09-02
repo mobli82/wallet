@@ -14,13 +14,14 @@
 				<thead>
 			 		<tr>
 						<th scope="col"> Nr </th>
-						<th scope="col"> Date</th>
-						<th scope="col"> Value</th>
-						<th scope="col"> Price</th>
-						<th scope="col"> Usage</th>
-						<th scope="col"> Update</th>
-						<th scope="col"> Detail</th>
-						<th scope="col"> Remove</th>
+						<th scope="col"> Date </th>
+						<th scope="col"> Value </th>
+						<th scope="col"> Zł/m3 </th>
+						<th scope="col"> Usage </th>
+						<th scope="col"> Total </th>
+						<th scope="col"> Update </th>
+						<th scope="col"> Detail </th>
+						<th scope="col"> Remove </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,9 +30,10 @@
 							<td>{{ forloop.counter }}</td>
 							<td>{{ record.date|date:"d/m/Y" }}</td>
 							<td>{{ record.value }}</td>
-							<td>{{ record.price }}</td>
+							<td>{{ record.unit_price }}</td>
 							<td>{{ record.monthly_usage }}</td>
-							<td><a href="#" class="btn btn-info">Edit</a></td>
+							<td>{{ record.total_cost }}</td>
+							<td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td>
 							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>

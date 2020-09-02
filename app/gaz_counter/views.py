@@ -28,3 +28,8 @@ class GazCounterDeletelView(DeleteView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_delete.html'
     success_url = '/gaz-list/'
+
+class GazCounterUpdateView(UpdateView):
+    model = GazCounterModel
+    fields = ['value', 'date', 'monthly_usage']
+    template_name = 'gaz_counter/gaz_counter_update.html'

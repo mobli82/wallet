@@ -13,7 +13,7 @@ class GazCounterModel(models.Model):
     total_cost = models.DecimalField(default=0, max_digits=1000, decimal_places=2)
 
     def __str__(self):
-        return f'{self.value} {self.date} {self.unit_price.price} {self.monthly_usage} {self.monthly_cost} {self.total_cost}'
+        return f'{self.value} {self.date} {self.unit_price} {self.monthly_usage} {self.monthly_cost} {self.total_cost}'
     
     def get_absolute_url(self):
         return reverse("gaz-detail", kwargs={"pk": self.pk})
