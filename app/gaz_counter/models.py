@@ -20,7 +20,7 @@ class GazCounterModel(models.Model):
         return reverse("gaz-detail", kwargs={"pk": self.pk})
 
 # signal to calculate all costs and counter's usage
-def calc_monthly_usage_monthly_cost_total_cost(sender, instance, **kwargs):
+def calc_monthly_usage_monthly_cost(sender, instance, **kwargs):
     max_gaz_value = GazCounterModel.objects.filter(owner=instance.owner).aggregate(Max('value'))
 
     if max_gaz_value['value__max'] is None:
@@ -32,4 +32,4 @@ def calc_monthly_usage_monthly_cost_total_cost(sender, instance, **kwargs):
 
     return instance
 
-pre_save.connect(calc_monthly_usage_monthly_cost_total_cost, GazCounterModel)
+pre_save.connect(calc_monthly_usage_monthly_cost, GazCounterModel)
