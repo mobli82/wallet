@@ -35,8 +35,8 @@ class GazCounterDetailView(DetailView):
     template_name = 'gaz_counter/gaz_counter_detail.html'
 
     def test_func(self):
-        object = self.get_object()
-        if self.request.user == object.owner:
+        obj = self.get_object()
+        if self.request.user == obj.owner:
             return True
         return False
 
