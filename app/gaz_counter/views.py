@@ -16,8 +16,6 @@ class GazCounterListView(ListView):
     def get_queryset(self):
         return GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
     
-
-
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     queryset = GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
