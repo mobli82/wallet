@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models.aggregates import Max, Sum
 from django.shortcuts import render
 from django.views.generic import (ListView, CreateView, DeleteView, DetailView, UpdateView)
@@ -33,6 +34,12 @@ class GazCounterDetailView(DetailView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_detail.html'
 
+    def test_func(self):
+        object = self.get_object()
+        if self.request.user == object.owner:
+            return True
+        return False
+
 class GazCounterCreateView(CreateView):
     model = GazCounterModel
     fields = ['value']
@@ -42,12 +49,24 @@ class GazCounterCreateView(CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
-class GazCounterDeletelView(DeleteView):
+class GazCounterDeletelView(UserPassesTestMixin, DeleteView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_delete.html'
     success_url = '/gaz-list/'
+
+    def test_func(self):
+        object = self.get_object()
+        if self.request.user == object.owner:
+            return True
+        return False
 
 class GazCounterUpdateView(UpdateView):
     model = GazCounterModel
     fields = ['value']
     template_name = 'gaz_counter/gaz_counter_update.html'
+
+    def test_func(self):
+        object = self.get_object()
+        if self.request.user == object.owner:
+            return True
+        return False
