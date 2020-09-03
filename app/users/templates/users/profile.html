@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section col-md-6 mt-4 shadow">
+    <div class="content-section col-md-12 mt-4 shadow">
         <div class="media">
-            <img class="rounded-circle p-5" src="{{ user.profile.image.url }}" alt="">
-
-            <div class="media-body mt-5">
+            <div class="media-body text-center">
+                <img class="rounded-circle p-5" src="{{ user.profile.image.url }}" alt="">
                 <h2>{{ user.username }}</h2>
-                <p>{{ user.email }}</p>
-        </div>
-        </div>
-    <!-- User Update form an Profile Update form-->
-        <div class="content-sm border-top p-5">
-            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                <legend> Profile Info </legend>
+                <p>Email: {{ user.email }}</p>
+                <p>Name: {{ user.first_name }}</p>
+                <p>Surname: {{ user.last_name }}</p>
+            </div>
+            <form class="border-left col-md-6 pl-4" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <legend class="text-center border-bottom"> Profile Info </legend>
                     {{ u_form|crispy }}
                     {{ p_form|crispy }}
                 
                 <input type="submit" value="Update" class="btn btn-info mt-3">
-            </form>    
+            </form> 
         </div>
+    <!-- User Update form an Profile Update form-->
         
     </div>
 {% endblock content %}
