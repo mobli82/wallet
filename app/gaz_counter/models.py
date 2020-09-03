@@ -14,7 +14,7 @@ class GazCounterModel(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.value} {self.date} {self.unit_price} {self.monthly_usage} {self.monthly_cost} {self.total_cost}'
+        return f'{self.value} {self.date} {self.unit_price} {self.monthly_usage} {self.monthly_cost}'
     
     def get_absolute_url(self):
         return reverse("gaz-detail", kwargs={"pk": self.pk})
@@ -25,7 +25,6 @@ def calc_monthly_usage_monthly_cost(sender, instance, **kwargs):
 
     if max_gaz_value['value__max'] is None:
         max_gaz_value['value__max'] = 0
-        max_gaz_value['total_cost__max'] = 0
     
     instance.monthly_usage = instance.value - max_gaz_value['value__max']
     instance.monthly_cost  = instance.monthly_usage * float(instance.unit_price)
