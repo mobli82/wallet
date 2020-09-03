@@ -11,15 +11,15 @@
 			 		<tr>
 						<th scope="col"> Date</th>
 						<th scope="col"> Value</th>
-						<th scope="col"> Price</th>
-						<th scope="col"> Usage</th>
+						<th scope="col"> Monthly Cost</th>
+						<th scope="col"> MOnthly Usage</th>
 					</tr>
 				</thead>
 				<tbody>
                     <tr>
                         <td>{{ object.date|date:"d/m/Y" }}</td>
                         <td>{{ object.value }}</td>
-                        <td>{{ object.price }}</td>
+                        <td>{{ object.monthly_cost }}</td>
                         <td>{{ object.monthly_usage }}</td>
                     </tr>
 				</tbody>

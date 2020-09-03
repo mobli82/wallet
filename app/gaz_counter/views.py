@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Max, Sum
 from django.shortcuts import render
 from django.views.generic import (ListView, CreateView, DeleteView, DetailView, UpdateView)
 
@@ -9,7 +10,24 @@ class GazCounterListView(ListView):
     template_name = 'gaz_counter/gaz_counter_list.html'
     paginate_by = 5
     context_object_name = 'gaz_list'
-    ordering = ['-date']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        gaz_list = GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
+        context["gaz_list"] = gaz_list
+        print(context)
+        return context
+   
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+
+    #     total_gaz_cost = GazCounterModel.objects.filter(owner=self.request.user).aggregate(Sum('monthly_cost'))
+    #     if total_gaz_cost['monthly_cost__sum'] is None:
+    #         total_gaz_cost['monthly_cost__sum'] = 0.00
+    #     context["total_gaz_cost"] = float(total_gaz_cost['monthly_cost__sum'])
+    #     return context
+    
 
 class GazCounterDetailView(DetailView):
     model = GazCounterModel
@@ -17,7 +35,7 @@ class GazCounterDetailView(DetailView):
 
 class GazCounterCreateView(CreateView):
     model = GazCounterModel
-    fields = ['value', 'monthly_usage', 'unit_price']
+    fields = ['value']
     template_name = 'gaz_counter/gaz_counter_create.html'
 
     def form_valid(self, form):
@@ -31,5 +49,5 @@ class GazCounterDeletelView(DeleteView):
 
 class GazCounterUpdateView(UpdateView):
     model = GazCounterModel
-    fields = ['value', 'date', 'monthly_usage']
+    fields = ['value']
     template_name = 'gaz_counter/gaz_counter_update.html'

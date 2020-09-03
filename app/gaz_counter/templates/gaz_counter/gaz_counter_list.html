@@ -4,7 +4,6 @@
 		
       	{% if  user.is_authenticated %}
 			<h3 class="text-success mt-4"> Gaz Counter List </h3>
-			<span class="badge badge-info font-badge p-2">Total cost: </span>
 			
 			<table class="table mt-3">
 				<div class="mt-4">
@@ -18,8 +17,9 @@
 						<th scope="col"> Value </th>
 						<th scope="col"> Zł/m3 </th>
 						<th scope="col"> Usage </th>
-						<th scope="col"> Total </th>
-						<th scope="col"> Update </th>
+						<th scope="col"> Monthly Cost </th>
+						{% comment %} <th scope="col"> Total </th> {% endcomment %}
+						{% comment %} <th scope="col"> Update </th> {% endcomment %}
 						<th scope="col"> Detail </th>
 						<th scope="col"> Remove </th>
 					</tr>
@@ -32,8 +32,9 @@
 							<td>{{ record.value }}</td>
 							<td>{{ record.unit_price }}</td>
 							<td>{{ record.monthly_usage }}</td>
-							<td>{{ record.total_cost }}</td>
-							<td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td>
+							<td>{{ record.monthly_cost }}</td>
+							{% comment %} <td>{{ record.total_cost }}</td> {% endcomment %}
+							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
 							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>
