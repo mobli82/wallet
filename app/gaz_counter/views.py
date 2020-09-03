@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.db.models.aggregates import Max, Sum
 from django.shortcuts import render
 from django.views.generic import (ListView, CreateView, DeleteView, DetailView, UpdateView)
@@ -11,12 +13,23 @@ class GazCounterListView(ListView):
     paginate_by = 5
     context_object_name = 'gaz_list'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        gaz_list = GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
-        context["gaz_list"] = gaz_list
-        print(context)
-        return context
+    def get_queryset(self):
+        return GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     queryset = GazCounterModel.objects.all().filter(owner=self.request.user).order_by('-date')
+    #     page_size = self.get_paginate_by(queryset)
+    #     paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+    #     context = {
+    #         'paginator': paginator,
+    #         'page_obj': page,
+    #         'is_paginated': is_paginated,
+    #         'gaz_list': queryset
+    #     }
+    #     # context["gaz_list"] = queryset
+    #     print(context)
+    #     return context
    
 
     # def get_context_data(self, **kwargs):
@@ -33,6 +46,12 @@ class GazCounterDetailView(DetailView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_detail.html'
 
+    def test_func(self):
+        obj = self.get_object()
+        if self.request.user == obj.owner:
+            return True
+        return False
+
 class GazCounterCreateView(CreateView):
     model = GazCounterModel
     fields = ['value']
@@ -42,12 +61,24 @@ class GazCounterCreateView(CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
-class GazCounterDeletelView(DeleteView):
+class GazCounterDeletelView(UserPassesTestMixin, DeleteView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_delete.html'
     success_url = '/gaz-list/'
+
+    def test_func(self):
+        obj = self.get_object()
+        if self.request.user == obj.owner:
+            return True
+        return False
 
 class GazCounterUpdateView(UpdateView):
     model = GazCounterModel
     fields = ['value']
     template_name = 'gaz_counter/gaz_counter_update.html'
+
+    def test_func(self):
+        object = self.get_object()
+        if self.request.user == object.owner:
+            return True
+        return False
