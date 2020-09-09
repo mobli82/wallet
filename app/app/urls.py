@@ -41,6 +41,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', include('wallet.urls')),
     path('', include('gaz_counter.urls')),
+    path('suppliers/', include('suppliers.urls')),
 ] 
 
 if settings.DEBUG:

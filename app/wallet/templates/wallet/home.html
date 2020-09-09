@@ -31,10 +31,13 @@
             <p class="text-center tail-text"> Bills </p>
             <p class="icon-dollar icons text-center"></p>
         </div>
-
-        <div class="col-md-4 mt-4 tail">
-            <p class="text-center tail-text"> Report </p>
-            <p class="icon-pencil icons text-center"></p>
-        </div>
+        
+        <a href="{% url 'gaz-suppliers' %}" class="tail">
+            <div class="col-md-4 mt-4 ">
+                <p class="text-center tail-text"> Suppliers </p>
+                <p class="icon-pencil icons text-center"></p>
+            </div>
+        </a>
+        
     </div>
 {% endblock content %}
