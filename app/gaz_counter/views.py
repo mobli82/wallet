@@ -42,7 +42,7 @@ class GazCounterListView(ListView):
     #     return context
     
 
-class GazCounterDetailView(DetailView):
+class GazCounterDetailView(UserPassesTestMixin, DetailView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_detail.html'
 
@@ -61,7 +61,7 @@ class GazCounterCreateView(CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
-class GazCounterDeletelView(UserPassesTestMixin, DeleteView):
+class GazCounterDeleteView(UserPassesTestMixin, DeleteView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_delete.html'
     success_url = '/gaz-list/'

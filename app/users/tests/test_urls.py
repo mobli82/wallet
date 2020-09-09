@@ -8,7 +8,7 @@ from django.contrib.auth.views import (
         PasswordResetConfirmView,
         PasswordResetCompleteView, 
     )
-from users.views import profile, register, UserLoginView
+from users.views import profile, register
 
 
 class TestUsersUrls(SimpleTestCase):
