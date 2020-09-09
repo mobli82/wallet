@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    # my apps
     'users.apps.UsersConfig',
     'wallet.apps.WalletConfig',
     'gaz_counter.apps.GazCounterConfig',
+    'suppliers.apps.SuppliersConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container ">
+      	{% if  user.is_authenticated %}
+          <div class="content-section col-md-6 mt-4">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Deletion Gaz Supplier</legend>
+                    <h2>Do you want to delete Supplier !!!</h2>
+                    <p class="text-info">Date: {{ object.name }}</p>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                    <a href="{% url 'gaz-suppliers' %}" class="btn btn-warning">Back</a>
+                </div>
+            </form>
+        </div>			
+		{% else %}
+			<div class="col-4 mt-4 p-3 ml-5 border border-secondary rounded shadow-sm rounded bg-lightssss">
+				<h3>You are not logged In!!</h3>
+				<p><a href="{% url 'login' %}" class="btn btn-secondary">Log In </a></p>
+			</div>
+		{% endif %}  
+
+    </div>
+{% endblock content %}

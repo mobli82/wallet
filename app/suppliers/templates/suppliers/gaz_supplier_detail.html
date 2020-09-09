@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section col-md-6 mt-4">
+        <h3>{{ object.name }}</h3>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="row">Vat</th>
+                        <td>{{ object.vat}} %</td>
+                </tr>
+                <tr>
+                    <th scope="row">Conversion Rate</th>
+                    <td>{{ object.conversion_rate }} [kwh/m3]</td>
+                </tr>
+                <tr>
+                    <th scope="row">Distribution Fee</th>
+                    <td>{{ object.distribution_fee }} zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gaz Fuel</th>
+                    <td>{{ object.gaz_fuel }} zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">Subscription Fee</th>
+                    <td>{{ object.subscription_fee }} zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">Distribution Fee Constant</th>
+                    <td>{{ object.distribution_fee_constant }} zł</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'gaz-suppliers' %}" class="btn btn-warning">Back</a>
+    </div>
+{% endblock content %}
