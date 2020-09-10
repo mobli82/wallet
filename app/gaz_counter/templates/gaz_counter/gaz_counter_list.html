@@ -20,8 +20,8 @@
 						<th scope="col"> Monthly Cost </th>
 						{% comment %} <th scope="col"> Total </th> {% endcomment %}
 						{% comment %} <th scope="col"> Update </th> {% endcomment %}
-						<th scope="col"> Detail </th>
-						<th scope="col"> Remove </th>
+						<th scope="col"></th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,6 +35,7 @@
 							<td>{{ record.monthly_cost }}</td>
 							{% comment %} <td>{{ record.total_cost }}</td> {% endcomment %}
 							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
+							<td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td>
 							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>
