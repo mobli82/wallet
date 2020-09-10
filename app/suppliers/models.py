@@ -11,7 +11,7 @@ class GazSupplier(models.Model):
     gaz_fuel = models.DecimalField(default=0.08944, max_digits=1000, decimal_places=5)
     subscription_fee = models.DecimalField(default=6.38, max_digits=1000, decimal_places=2)
     distribution_fee_constant = models.DecimalField(default=3.49, max_digits=1000, decimal_places=2)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse("gaz-supplier-detail", kwargs={"pk": self.pk})
