@@ -35,7 +35,7 @@
 							<td>{{ record.monthly_cost }}</td>
 							{% comment %} <td>{{ record.total_cost }}</td> {% endcomment %}
 							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
-							<td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td>
+							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
 							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>
