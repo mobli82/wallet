@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.db.models.aggregates import Max, Sum
 from django.shortcuts import render
@@ -7,7 +7,7 @@ from django.views.generic import (ListView, CreateView, DeleteView, DetailView, 
 from .forms import GazCounterForm
 from .models import GazCounterModel
 
-class GazCounterListView(ListView):
+class GazCounterListView(LoginRequiredMixin, ListView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_list.html'
     paginate_by = 5
@@ -42,7 +42,7 @@ class GazCounterListView(ListView):
     #     return context
     
 
-class GazCounterDetailView(UserPassesTestMixin, DetailView):
+class GazCounterDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_detail.html'
 
@@ -52,16 +52,17 @@ class GazCounterDetailView(UserPassesTestMixin, DetailView):
             return True
         return False
 
-class GazCounterCreateView(CreateView):
+class GazCounterCreateView(LoginRequiredMixin, CreateView):
     model = GazCounterModel
     fields = ['value']
+    # fields = ['value', 'date', 'monthly_cost', 'monthly_usage']
     template_name = 'gaz_counter/gaz_counter_create.html'
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
-class GazCounterDeleteView(UserPassesTestMixin, DeleteView):
+class GazCounterDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = GazCounterModel
     template_name = 'gaz_counter/gaz_counter_delete.html'
     success_url = '/gaz-list/'
@@ -72,9 +73,9 @@ class GazCounterDeleteView(UserPassesTestMixin, DeleteView):
             return True
         return False
 
-class GazCounterUpdateView(UpdateView):
+class GazCounterUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = GazCounterModel
-    fields = ['value']
+    fields = ['value', 'monthly_cost', 'monthly_usage']
     template_name = 'gaz_counter/gaz_counter_update.html'
 
     def test_func(self):
@@ -82,3 +83,7 @@ class GazCounterUpdateView(UpdateView):
         if self.request.user == object.owner:
             return True
         return False
+    
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
