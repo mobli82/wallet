@@ -1,25 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'wallet/base.html' %}
 {% block content %}
     <div class="container ">
 		
       	{% if  user.is_authenticated %}
 			<h3 class="text-success mt-4"> Gaz Counter List </h3>
 			
-			<table class="table mt-3">
+			<table class="table mt-3 col-md-12">
 				<div class="mt-4">
-					<a href="#" class="btn btn-secondary">Back to Counters</a>
+					<a href="{% url 'counters'%}" class="btn btn-secondary">Back to Counters</a>
 					<a href="{% url 'gaz-create' %}" class="btn btn-success"> Add Record </a>
 				</div>
 				<thead>
 			 		<tr>
-						<th scope="col"> Nr </th>
 						<th scope="col"> Date </th>
 						<th scope="col"> Value </th>
-						<th scope="col"> Zł/m3 </th>
 						<th scope="col"> Usage </th>
 						<th scope="col"> Monthly Cost </th>
-						{% comment %} <th scope="col"> Total </th> {% endcomment %}
-						{% comment %} <th scope="col"> Update </th> {% endcomment %}
 						<th scope="col"></th>
 						<th scope="col"></th>
 					</tr>
@@ -27,15 +23,10 @@
 				<tbody>
 					{% for record in gaz_list %}
 						<tr>
-							<td>{{ forloop.counter }}</td>
 							<td>{{ record.date|date:"d/m/Y" }}</td>
 							<td>{{ record.value }}</td>
-							<td>{{ record.unit_price }}</td>
 							<td>{{ record.monthly_usage }}</td>
 							<td>{{ record.monthly_cost }}</td>
-							{% comment %} <td>{{ record.total_cost }}</td> {% endcomment %}
-							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
-							{% comment %} <td><a href="{% url 'gaz-update' record.id %}" class="btn btn-info">Edit</a></td> {% endcomment %}
 							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
 							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>

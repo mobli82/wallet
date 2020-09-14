@@ -1,0 +1,33 @@
+{% extends 'wallet/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row mx-auto mt-3">
+        <a href="{% url 'gaz-list' %}" class="tail text-decoration-none text-danger col-md-6">
+            <div class="text-center">
+                <p class="tail-text"> Gaz Counter </p>
+                <p class="icon-fire-1 icons"></p>
+            </div>
+        </a>
+        <a href="#" class="tail text-decoration-none text-secondary col-md-4">
+            <div class="text-center">
+                <p class="tail-text"> Power Counter </p>
+                <p class="icon-flash-1 icons"></p>
+            </div>
+        </a>
+    </div>
+
+    <div class="row mx-auto mt-3">
+        <a href="#" class="tail text-decoration-none text-info col-md-6">
+            <div class="text-center">
+                <p class="tail-text"> Home Counter</p>
+                <p class="icon-bath icons"></p>
+            </div>
+        </a>
+        <a href="#" class="tail text-decoration-none text-success col-md-4">
+            <div class="text-center">
+                <p class="text-center tail-text"> Garden Counter </p>
+                <p class="icon-garden icons text-center"></p>
+            </div>
+        </a>                 
+    </div>
+{% endblock content %}
