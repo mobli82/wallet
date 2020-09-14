@@ -1,35 +1,28 @@
-{% extends 'base.html' %}
+{% extends "wallet/base.html" %}
 {% block content %}
-    <div class="container ">
-		
-      	{% if  user.is_authenticated %}
-			<table class="table mt-3">
-				<div class="mt-4">
-					<a href="{% url 'gaz-list' %}" class="btn btn-secondary">Back</a>
-				</div>
-				<thead>
-			 		<tr>
-						<th scope="col"> Date</th>
-						<th scope="col"> Value</th>
-						<th scope="col"> Monthly Cost</th>
-						<th scope="col"> MOnthly Usage</th>
-					</tr>
-				</thead>
-				<tbody>
-                    <tr>
-                        <td>{{ object.date|date:"d/m/Y" }}</td>
-                        <td>{{ object.value }}</td>
-                        <td>{{ object.monthly_cost }}</td>
-                        <td>{{ object.monthly_usage }}</td>
-                    </tr>
-				</tbody>
-			</table>			
-		{% else %}
-			<div class="col-4 mt-4 p-3 ml-5 border border-secondary rounded shadow-sm rounded bg-lightssss">
-				<h3>You are not logged In!!</h3>
-				<p><a href="{% url 'login' %}" class="btn btn-secondary">Log In </a></p>
-			</div>
-		{% endif %}  
-
+    <div class="content-section col-md-6 mt-4">
+        <h3>Record detail </h3>
+        <table class="table table-hover">
+            <tbody>
+				<tr>
+                    <th scope="row">Added Date</th>
+                    <td>{{ object.date|date:"d M Y" }} </td>
+                </tr>
+                <tr>
+                    <th scope="row">Counter value</th>
+                    <td>{{ object.value}} </td>
+                </tr>
+                <tr>
+                    <th scope="row">Monthly Usage</th>
+                    <td>{{ object.monthly_usage }} m3</td>
+                </tr>
+                <tr>
+                    <th scope="row">Monthly Cost</th>
+                    <td>{{ object.monthly_cost }} zł</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <a href="{% url 'gaz-list' %}" class="btn btn-warning">Back</a>
     </div>
 {% endblock content %}

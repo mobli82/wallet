@@ -1,44 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'wallet/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="row mx-auto">
-
-        <div class="col-md-4 mt-4 tail text-info" onclick="location.href={% url 'profile' %};">
-            <p class="text-center tail-text"> Profile </p>
-            <p class="icon-users-1 icons text-center "></p>
-
-        </div>
-
-        <div class="col-md-4 mt-4 tail text-secondary">
-            <p class="text-center tail-text"> Budget </p>
-            <p class="icon-bank icons text-center"></p>
-        </div>
-
-        <div class="col-md-4 mt-4 tail text-warning" >
-            <p class="text-center tail-text"> Statistics </p>
-            <p class="icon-id-card icons text-center"></p>
-        </div>
-
-    </div>
-
-    <div class="row mx-auto">
-        <a href="{% url 'gaz-list' %}" class="tail">
-            <div class="col-md-4 mt-4 ">
-                <p class="text-center tail-text"> Counters </p>
-                <p class="icon-sliders icons text-center"></p>
-            </div>
-        </a>        
-        <div class="col-md-4 mt-4 tail text-success">
-            <p class="text-center tail-text"> Bills </p>
-            <p class="icon-dollar icons text-center"></p>
-        </div>
-        
-        <a href="{% url 'gaz-suppliers' %}" class="tail">
-            <div class="col-md-4 mt-4 ">
-                <p class="text-center tail-text"> Suppliers </p>
-                <p class="icon-pencil icons text-center"></p>
+    <div class="row mx-auto mt-3">
+        <a href="{% url 'profile' %}" class="tail text-decoration-none text-info col-md-4">
+            <div class="text-center">
+                <p class="tail-text"> Profile </p>
+                <p class="icon-user-1 icons"></p>
             </div>
         </a>
-        
+        <a href="#" class="tail text-decoration-none text-secondary col-md-4">
+            <div class="text-center">
+                <p class="tail-text"> Budget </p>
+                <p class="icon-bank icons"></p>
+            </div>
+        </a>
+        <a href="#" class="tail text-decoration-none text-warning col-md-4">
+            <div class="text-center">
+                <p class="tail-text">Statistics</p>
+                <p class="icon-id-card icons pr-3"></p>
+            </div>
+        </a>
+    </div>
+
+    <div class="row mx-auto mt-3">
+        <a href="{% url 'counters' %}" class="tail text-decoration-none text-danger col-md-4">
+            <div class="text-center">
+                <p class="tail-text">Counters</p>
+                <p class="icon-sliders icons"></p>
+            </div>
+        </a>
+        <a href="#" class="tail text-decoration-none text-success col-md-4">
+            <div class="text-center">
+                <p class="text-center tail-text"> Bills </p>
+                <p class="icon-dollar icons text-center"></p>
+            </div>
+        </a>                 
+        <a href="{% url 'gaz-suppliers' %}" class="tail text-decoration-none col-md-4">
+            <div class="text-center">
+                <p class="text-center tail-text"> Suppliers </p>
+                <p class="icon-pencil icons"></p>
+            </div>
+        </a>
     </div>
 {% endblock content %}
