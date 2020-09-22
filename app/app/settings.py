@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'wallet.apps.WalletConfig',
     'gaz_counter.apps.GazCounterConfig',
     'suppliers.apps.SuppliersConfig',
+    'power_counter.apps.PowerCounterConfig',
 ]
 
 MIDDLEWARE = [

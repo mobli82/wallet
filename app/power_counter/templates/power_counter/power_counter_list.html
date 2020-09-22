@@ -3,12 +3,12 @@
     <div class="container ">
 		
       	{% if  user.is_authenticated %}
-			<h3 class="text-success mt-4"> Gaz Counter Records List </h3>
+			<h3 class="text-seconadry mt-4"> Power Counter List </h3>
 			
 			<table class="table mt-3 col-md-12">
 				<div class="mt-4">
-					<a href="{% url 'counters'%}" class="btn btn-secondary">Back to Counters</a>
-					<a href="{% url 'gaz-create' %}" class="btn btn-success"> Add Record </a>
+					<a href="{% url 'counters' %}" class="btn btn-secondary">Back to Counters</a>
+					<a href="{% url 'power-create' %}" class="btn btn-success"> Add Record </a>
 				</div>
 				<thead>
 			 		<tr>
@@ -21,14 +21,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for record in gaz_list %}
+					{% for record in power_list %}
 						<tr>
 							<td>{{ record.date|date:"d/m/Y" }}</td>
 							<td>{{ record.value }}</td>
 							<td>{{ record.monthly_usage }}</td>
 							<td>{{ record.monthly_cost }}</td>
-							<td><a href="{% url 'gaz-detail' record.id %}" class="btn btn-warning">Detail</a></td>
-							<td><a href="{% url 'gaz-delete' record.id %}" class="btn btn-danger">Delete</a></td>
+							<td><a href="{% url 'power-detail' record.id %}" class="btn btn-warning">Detail</a></td>
+							<td><a href="{% url 'power-delete' record.id %}" class="btn btn-danger">Delete</a></td>
 						</tr>
 					{% endfor %}
 				</tbody>
