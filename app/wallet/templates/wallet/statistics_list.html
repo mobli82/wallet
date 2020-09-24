@@ -1,0 +1,9 @@
+{% extends 'wallet/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-md-8">
+        <canvas id="MonthlyUsage"></canvas>
+        <script src="{% static 'js/stats.js' %}"></script>
+    </div>
+    
+{% endblock content %}
