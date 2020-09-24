@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.db.models.signals import pre_save
 
-from suppliers.models import GazSupplier
+from suppliers.models import GazSupplierModel
 from .utils import calculate_gaz_usage
 
 class GazCounterModel(models.Model):
@@ -25,7 +25,7 @@ class GazCounterModel(models.Model):
 #signal to calculate all costs and counter's usage
 def calc_monthly_usage_monthly_cost(sender, instance, **kwargs):
     max_gaz_value = GazCounterModel.objects.filter(owner=instance.owner).aggregate(Max('value'))
-    gaz_supplier = GazSupplier.objects.filter(owner=instance.owner).first()
+    gaz_supplier = GazSupplierModel.objects.filter(owner=instance.owner).first()
 
     if max_gaz_value['value__max'] is None:
         max_gaz_value['value__max'] = 0

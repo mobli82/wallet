@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import GazSupplier
+from .models import GazSupplierModel
 
-admin.site.register(GazSupplier)
+admin.site.register(GazSupplierModel)

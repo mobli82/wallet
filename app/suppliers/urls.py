@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (GazSuppliersListView, 
+from .gaz_suppliers_views import (GazSuppliersListView, 
                     GazSupplierCreateView, 
                     GazSupplierDetailView,
                     GazSupplierUpdateView,
