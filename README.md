@@ -1,4 +1,5 @@
-Simple app for calculate counters (gaz counter, power counter and water counter) usage and costs.
+Simple app for calculate counters usage and costs
+"""(gaz counter, power counter and water counter)"""
 
 In future:
 - usage statistics
