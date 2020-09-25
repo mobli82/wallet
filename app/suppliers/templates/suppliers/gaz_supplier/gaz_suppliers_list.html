@@ -1,11 +1,11 @@
-{% extends "wallet/base.html" %}
+{% extends 'wallet/base.html' %}
 {% block content %}
     <div class="content-section col-md-6 mt-4">
        <h3 class="text-success mt-4"> Gaz Suppliers List </h3>
 			
 			<table class="table mt-3">
 				<div class="mt-4">
-					<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+					<a href="{% url 'suppliers-list' %}" class="btn btn-secondary">Back</a>
 					<a href="{% url 'gaz-supplier-create' %}" class="btn btn-success"> Add Gaz Supplier </a>
 				</div>
 				<thead>

@@ -23,3 +23,6 @@ def gaz_counter_summary(request):
 
 def statistics(request):
     return render(request, 'wallet/statistics_list.html')
+
+def suppliers_list(request):
+    return render(request, 'wallet/suppliers_list.html')

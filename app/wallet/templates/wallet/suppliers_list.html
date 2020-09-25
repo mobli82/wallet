@@ -1,0 +1,24 @@
+{% extends 'wallet/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row mx-auto mt-5">
+        <a href="{% url 'gaz-suppliers' %}" class="tail text-decoration-none text-danger col-md-4">
+            <div class="text-center">
+                <p class="tail-text"> Gaz Suppliers </p>
+                <p class="icon-free-code-camp icons"></p>
+            </div>
+        </a>
+        <a href="{% url 'power-suppliers' %}" class="tail text-decoration-none text-secondary col-md-4">
+            <div class="text-center">
+                <p class="tail-text"> Power Suppliers </p>
+                <p class="icon-flash icons"></p>
+            </div>
+        </a>
+        <a href="#" class="tail text-decoration-none text-info col-md-4">
+            <div class="text-center">
+                <p class="tail-text">Water Suppliers</p>
+                <p class="icon-drizzle icons pr-3"></p>
+            </div>
+        </a>
+    </div>
+{% endblock content %}
