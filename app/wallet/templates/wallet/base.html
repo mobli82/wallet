@@ -21,7 +21,7 @@
     {% include 'wallet/nav_bar.html' %}
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 ">
                 {% if messages %}
                     {% for message in messages %}
                         <div class="alert alert-{{ message.tags }} mt-3 text-center">
@@ -29,11 +29,9 @@
                         </div>
                     {% endfor%}
                 {% endif %}
-                {% block content %}{% endblock%}
             </div>
-            
         </div>
-
+        {% block content %}{% endblock%}
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
