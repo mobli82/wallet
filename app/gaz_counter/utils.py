@@ -28,11 +28,16 @@ def calculate_gaz_usage(usage: int, supplier)-> float:
     except KeyError:
         pass
         
-    kwh_value = math.ceil(conversion_rate * usage)
+    kwh_value = round(conversion_rate * usage)
+    # print(kwh_value)
     dist_fee = round((kwh_value * float(Decimal(distribution_fee)) * vat), 2)
+    # print(dist_fee)
     fuel_fee = round((kwh_value * float(Decimal(gaz_fuel)) * vat), 2)
+    # print(fuel_fee)
     sub_fee = round(float(Decimal(subscription_fee)) * vat, 2)
+    # print(sub_fee)
     dist_fee_const = round(float(Decimal(distribution_fee_constant)) * vat, 2)
+    # print(dist_fee)
 
     total = sum([dist_fee, fuel_fee, sub_fee, dist_fee_const])
 
