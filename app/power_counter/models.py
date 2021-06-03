@@ -22,6 +22,8 @@ class PowerCounterModel(models.Model):
 
     def save(self, *args, **kwargs):
         record_max = PowerCounterModel.objects.filter(owner=self.owner).aggregate(Max('value'))
+        if record_max['value__max'] is None:
+            record_max['value__max'] = 0
         self.monthly_usage = self.value - record_max['value__max']
 
         self.monthly_cost = calculate_montlhy_power_cost(usage=self.monthly_usage, user=self.owner)

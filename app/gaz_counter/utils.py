@@ -18,7 +18,7 @@ def calculate_gaz_usage(usage: int, supplier)-> float:
         raise ValueError
     
     try:
-        vat = (supplier.vat + 100) / 100
+        vat =                       (supplier.vat + 100) / 100
         conversion_rate =           supplier.conversion_rate
         distribution_fee =          supplier.distribution_fee
         gaz_fuel =                  supplier.gaz_fuel
