@@ -1,9 +1,21 @@
 {% extends 'wallet/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="col-md-8">
-        <canvas id="MonthlyUsage"></canvas>
-        <script src="{% static 'js/stats.js' %}"></script>
+    <div class="col-md-6 float-md-left">
+        <canvas id="gaz-monthly-usage"></canvas>
+        <script src="{% static 'js/gaz_usage_stats.js' %}"></script>
     </div>
+    <div class="col-md-6 float-md-left">
+        <canvas id="power-monthly-usage"></canvas>
+        <script src="{% static 'js/power_usage_stats.js' %}"></script>
+    </div>
+    <div class="col-md-6 float-md-left">
+        <canvas id="gaz-monthly-costs"></canvas>
+        <script src="{% static 'js/gaz_costs_stats.js' %}"></script>
+    </div>
+    <div class="col-md-6 float-md-left">
+        <canvas id="power-monthly-costs"></canvas>
+        <script src="{% static 'js/power_costs_stats.js' %}"></script>
+    </div>  
     
 {% endblock content %}

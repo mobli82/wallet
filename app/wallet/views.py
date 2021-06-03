@@ -2,7 +2,9 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
+
 from gaz_counter.models import GazCounterModel
+from power_counter.models import PowerCounterModel
 
 def home(request):
     return render(request, 'wallet/home.html')
@@ -10,7 +12,7 @@ def home(request):
 def counters_list(request):
     return render(request, 'wallet/counters_list.html')
 
-def gaz_counter_summary(request):
+def gaz_counter_summary_usage(request):
     context = GazCounterModel.objects.filter(owner=request.user).order_by('date')
 
     summary = {}
@@ -18,6 +20,39 @@ def gaz_counter_summary(request):
     for record in context:
         date = f'{record.date.month}/{record.date.year}'
         summary[date] = record.monthly_usage
+
+    return JsonResponse({'summary': summary,}, safe=False)
+
+def gaz_counter_summary_costs(request):
+    context = GazCounterModel.objects.filter(owner=request.user).order_by('date')
+
+    summary = {}
+
+    for record in context:
+        date = f'{record.date.month}/{record.date.year}'
+        summary[date] = record.monthly_cost
+
+    return JsonResponse({'summary': summary,}, safe=False)
+
+def power_counter_summary_usage(request):
+    context = PowerCounterModel.objects.filter(owner=request.user).order_by('date')
+
+    summary = {}
+
+    for record in context:
+        date = f'{record.date.month}/{record.date.year}'
+        summary[date] = record.monthly_usage
+
+    return JsonResponse({'summary': summary,}, safe=False)
+
+def power_counter_summary_costs(request):
+    context = PowerCounterModel.objects.filter(owner=request.user).order_by('date')
+
+    summary = {}
+
+    for record in context:
+        date = f'{record.date.month}/{record.date.year}'
+        summary[date] = record.monthly_cost
 
     return JsonResponse({'summary': summary,}, safe=False)
 

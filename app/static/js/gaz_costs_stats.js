@@ -1,5 +1,5 @@
-const renderGazSummaryUsage = (months, usage) => {
-    var ctx = document.getElementById('MonthlyUsage');
+const renderGazCostsSummaryUsage = (months, usage) => {
+    var ctx = document.getElementById('gaz-monthly-costs');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -29,7 +29,8 @@ const renderGazSummaryUsage = (months, usage) => {
         options: {
             title: {
                 display: true,
-                text: 'Gaz Usage per month',
+                text: 'Gaz Costs per month',
+                fontSize: 20,
             },
             scales: {
                 yAxes: [{
@@ -38,7 +39,7 @@ const renderGazSummaryUsage = (months, usage) => {
                     },
                     scaleLabel:{
                         display: true,
-                        labelString: 'Usage m/3',
+                        labelString: 'Costs zł/month',
                         fontSize: 18,
                     },
                 }],
@@ -54,8 +55,8 @@ const renderGazSummaryUsage = (months, usage) => {
     });
 };
 
-const getGazListData = () => {
-    fetch('/gaz-summary')
+const getGazCostsData = () => {
+    fetch('/gaz-summary-costs')
     .then((res) => res.json())
     .then((results,) => {
         console.log("results", results);
@@ -64,8 +65,8 @@ const getGazListData = () => {
             Object.keys(summary),
             Object.values(summary),
         ];
-        return renderGazSummaryUsage(month, usage);
+        return renderGazCostsSummaryUsage(month, usage);
     });
 }
 
-document.onload = getGazListData();
+document.onload = getGazCostsData();
